@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href ="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
+</head>
+<body>
+<div class="container">
+	<div class="heading">
+		TODO App
+	</div>
+	<form action="/add-task" method="POST">
+		<div class="input-1 input">
+		<input id="des" type="text" name="description" placeholder="Description" required="true">
+		</div>
+		<div class="input-2 input">
+         	<select id="scroll" name="category">
+         		<option value="">Choose Category</option>
+         		<option  value="Personal">Personal</option>
+         		<option value="Work">Work</option>
+         		<option  value="School">School</option>
+         		<option  value="Other">Other</option>
+         	</select>
+         	<input type="date" name="date" id="date">
+		</div>
+		<div class="input-3 input">
+         <button type="submit" id="submit">Add Task <i class="fa fa-plus"></i></button>
+		</div>
+	</form>
+	<div class="main">
+		<ul>
+			<%for(let i of task_list){%>
+			<li>
+				<div class="item-1 items">
+					<div id="description-box"><%=i.description%></div>
+				    <a href="/delete-task/?id=<%=i._id%>"><i class="fas fa-trash-alt"></i></a>
+				</div>
+				<div class="item-2 items">
+				<div id="date-box"><i class="fas fa-calendar-alt"></i><%=i.date%></div>
+				<div id="category-box"><%=i.category%></div>
+				</div>
+			</li>
+			<%}%>
+			
+		</ul>
+	</div>
+</div>
+<script type="text/javascript" src="home.js"></script>
+</body>
+</html>
